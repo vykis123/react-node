@@ -2,7 +2,6 @@ import { useEffect, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import useLocalStorage from "../../hooks/useLocalStorage";
-// import { loginReducer } from "../Form/formReducer";
 import { FormValidationEnum } from "../Form/formReducer";
 import { formReducer } from "./formReducer";
 
@@ -56,21 +55,32 @@ function Form({ name, handleLoggedInState }: Props) {
 
     if (responseData.accessToken) {
       useLocalStorage("set", responseData.accessToken);
+      /**
+       * TODO: Handle error for optional function
+       */
       handleLoggedInState(true);
       navigate("/home");
     }
   };
 
+  /**
+   * TODO: Not best idea to check by string value.
+   * Need to change it future
+   */
   useEffect(() => {
     if (data?.message.includes("created!")) {
       setTimeout(() => {
         navigate("/");
       }, 2000);
     }
+
+    return () => {
+      clearTimeout();
+    };
   }, [data]);
 
   return (
-    <form action="#" onSubmit={onSubmit} className=" p-4 w-1/3">
+    <form action="#" onSubmit={onSubmit} className=" p-4 w-1/3  my-auto">
       <h1 className="font-display font-medium text-center mb-4 text-xl text-white2">
         {name}
       </h1>

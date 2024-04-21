@@ -18,7 +18,7 @@ function RootLayout() {
   }, []);
 
   return (
-    <main className="bg-gradient-to-r from-dark1 to-dark2 min-h-screen p-6 grid gap-1 place-items-center">
+    <main className="bg-gradient-to-r from-dark1 to-dark2 min-h-screen p-6 flex flex-col items-center gap-2">
       {logedIn && <Menu handleLoggedInState={handleLoggedInState} />}
       <Outlet context={{ setLoggedIn }} />
     </main>

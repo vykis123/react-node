@@ -15,7 +15,7 @@ function Menu({ handleLoggedInState }: LoggedInState) {
 
   return (
     <>
-      <nav className="min-w-full self-baseline flex flex-1 justify-between">
+      <nav className="min-w-full self-baseline flex justify-between">
         <h2 className="text-white2 font-display ">Navigation</h2>
         <div>
           <button
